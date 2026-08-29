@@ -11,16 +11,16 @@ public:
         return res;
     }
     bool isHappy(int n) {
-        unordered_map<int,int>mpp;
-        mpp[n]++;
+        unordered_set<int>seen;
+        seen.insert(n);
         while(n!=1)
         {
             n=SumOfSquares(n);
-            if(mpp.find(n)!=mpp.end())
+            if(seen.find(n)!=seen.end())
             {
                 return false;
             }
-            mpp[n]++;
+            seen.insert(n);
         }
         return true;
     }
