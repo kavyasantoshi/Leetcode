@@ -4,17 +4,17 @@ public:
         int n = nums.size();
         double maxsum=0;
         double maxavg=INT_MIN;
-        double maxi=INT_MIN;
-        for(int i=0;i<k;i++)
+        int i=0,j=0;
+        while(i<n && j<n)
         {
-            maxsum+=nums[i];
-            maxavg=maxsum/k;
-        }
-        for(int i=k;i<n;i++)
-        {
-           maxsum+=nums[i]-nums[i-k];
-           maxi=max(maxi,maxsum);
-           maxavg=max(maxavg,maxi/k);
+            maxsum+=nums[j];
+            while(i<n && j-i+1==k)
+            {
+               maxavg = max(maxavg,(maxsum/k));
+               maxsum-=nums[i];
+               i++;
+            }
+            j++;
         }
         return maxavg;
     }
