@@ -1,22 +1,17 @@
 class Solution {
 public:
     bool isPowerOfFour(int n) {
-        int flag=0;
-        for(int i=0;i<=sqrt(n);i++)
+        int ans = n;
+        int count=0;
+        while(n!=0)
         {
-            if(pow(4,i)==n)
+            n=n/4;
+            if(n!=0)
             {
-                flag=1;
-                break;
+                count++;
             }
         }
-        if(flag==1)
-        {
-            return true;
-        }
-        else
-        {
-         return false;
-        }
+        if(ans == pow(4,count)) return true;
+        else return false;
     }
 };
